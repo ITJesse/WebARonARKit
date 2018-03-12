@@ -1108,6 +1108,9 @@
             plane = WebARonARKitVRDisplay.planes_.get(eventPlane.identifier);
             if (plane) {
               plane.set_(eventPlane);
+            } else {
+              plane = new VRPlane(eventPlane);
+              WebARonARKitVRDisplay.planes_.set(plane.identifier, plane);
             }
           } else if (event.type === "planesremoved") {
             // If the plane has been removed, remove the actual VRPlane instance.
